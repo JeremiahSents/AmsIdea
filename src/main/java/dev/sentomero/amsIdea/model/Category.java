@@ -9,10 +9,10 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "kp_category")
-public class category {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // Unique ID for each category
+    private int id;  // Unique ID for each category
 
     @Column(name = "name", unique = true, nullable = false)
     private String name;  // Category name (e.g., Breastfeeding)

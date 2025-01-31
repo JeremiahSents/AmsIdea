@@ -1,4 +1,4 @@
 package dev.sentomero.amsIdea.service;
 
-public interface PatientService {
+public interface AmsUserService {
 }

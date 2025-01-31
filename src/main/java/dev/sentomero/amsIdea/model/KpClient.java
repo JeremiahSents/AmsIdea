@@ -23,7 +23,7 @@ public class KpClient {
     private String kpClientLName;
 
     @Column(name = "kp_client_unique_id", unique = true, nullable = false)
-    private String kpClientSerialNumber;
+    private long kpClientSerialNumber;
 
     @Column(name = "kp_client_date_assigned")
     private LocalDateTime kpClientTimeAssigned;
@@ -32,7 +32,7 @@ public class KpClient {
     @JoinColumn(name = "registered_by", nullable = false)
     private AmsUser registeredBy;  // Foreign key to AmsUser
 
-    @ManyToOne
-    @JoinColumn(name = "kp_category", nullable = false)
-    private category categoryRegistered;  // Now stored as a database entity
+   @ManyToOne
+   @JoinColumn(name = "kp_category", nullable = false)
+    private Category categoryRegistered;  // Now stored as a database entity
 }
