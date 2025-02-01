@@ -6,13 +6,13 @@ import dev.sentomero.amsIdea.model.AmsUser;
 import java.util.List;
 
 public interface AmsUserService {
-    AmsUser savedUser(AmsUserDto user);
+    AmsUserDto savedUser(AmsUserDto user);
 
-    List<AmsUser> getAllUsers();
+    List<AmsUserDto> getAllUsers();
 
-    AmsUser getUserById(int id);
+    AmsUserDto getUserById(int id);
 
-    AmsUser updateUser(int id, AmsUserDto user);
+    AmsUserDto updateUser(int id, AmsUserDto user);
 
     void deleteUser(int id);
 }

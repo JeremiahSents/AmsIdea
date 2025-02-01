@@ -24,8 +24,8 @@ public class AmsUserController {
     //POST - Create new user
 
     @PostMapping("/createUser") //http://localhost:8080/users/createUser
-    public ResponseEntity<AmsUser> createUser(@RequestBody AmsUserDto amsUserDto) {
-        AmsUser savedUser = amsUserService.savedUser(amsUserDto);
+    public ResponseEntity<AmsUserDto> createUser(@RequestBody AmsUserDto amsUserDto) {
+        AmsUserDto savedUser = amsUserService.savedUser(amsUserDto);
         return ResponseEntity.status(201).body(savedUser);
     }
 
@@ -33,8 +33,8 @@ public class AmsUserController {
 
     //PUT - Update user
     @PutMapping("/updateUser/{id}")
-    public ResponseEntity<AmsUser> updateUser(@PathVariable("id") int id, @RequestBody AmsUserDto amsUserDto) {
-        AmsUser updatedUser = amsUserService.updateUser(id, amsUserDto);
+    public ResponseEntity<AmsUserDto> updateUser(@PathVariable("id") int id, @RequestBody AmsUserDto amsUserDto) {
+        AmsUserDto updatedUser = amsUserService.updateUser(id, amsUserDto);
         return ResponseEntity.ok(updatedUser);
     }
 
@@ -48,15 +48,15 @@ public class AmsUserController {
 
     //GET - Get user by ID
     @GetMapping("/getUser/{id}")
-    public ResponseEntity<AmsUser> getUserById(@PathVariable("id") int id) {
-        AmsUser user = amsUserService.getUserById(id);
+    public ResponseEntity<AmsUserDto> getUserById(@PathVariable("id") int id) {
+        AmsUserDto user = amsUserService.getUserById(id);
         return ResponseEntity.ok(user);
     }
 
     //GET - Get all users
     @GetMapping("/AllAmsUsers")
-    public ResponseEntity<List<AmsUser>> getAllUsers() {
-        List<AmsUser> users = amsUserService.getAllUsers();
+    public ResponseEntity<List<AmsUserDto>> getAllUsers() {
+        List<AmsUserDto> users = amsUserService.getAllUsers();
         return ResponseEntity.ok(users);
     }
 }

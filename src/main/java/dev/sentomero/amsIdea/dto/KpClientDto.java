@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 public class KpClientDto {
     private String kpClientFName;
     private String kpClientLName;
-    private long kpClientSerialNumber;
     private int registeredBy;
     private String categoryRegistered;
     private LocalDateTime kpClientTimeAssigned;
@@ -21,7 +20,6 @@ public class KpClientDto {
     public KpClientDto(String kpClientFName, String kpClientLName, long kpClientSerialNumber,int registeredBy, String categoryRegistered) {
         this.kpClientFName = kpClientFName;
         this.kpClientLName = kpClientLName;
-        this.kpClientSerialNumber = kpClientSerialNumber;
         this.registeredBy = registeredBy;
         this.categoryRegistered = categoryRegistered;
     }

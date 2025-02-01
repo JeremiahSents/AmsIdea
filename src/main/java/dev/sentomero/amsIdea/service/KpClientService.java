@@ -6,15 +6,15 @@ import dev.sentomero.amsIdea.model.KpClient;
 import java.util.List;
 
 public interface KpClientService {
-    KpClient saveClient(KpClientDto client);
+    KpClientDto saveClient(KpClientDto client);
 
-    List<KpClient> getAllClients();
+    List<KpClientDto> getAllClients();
 
-    KpClient getKpClientById(int id);
+    KpClientDto getKpClientById(int id);
 
-    KpClient getKpClientBySerialNumber(long serialNumber);
+    KpClientDto getKpClientBySerialNumber(long serialNumber);
 
-    KpClient updateKpClient(int id, KpClientDto client);
+    KpClientDto updateKpClient(int id, KpClientDto client);
 
     void deleteKpClient(int id);
 
