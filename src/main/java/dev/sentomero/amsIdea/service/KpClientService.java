@@ -18,7 +18,4 @@ public interface KpClientService {
 
     void deleteKpClient(int id);
 
-    KpClient updateClient(int id, KpClientDto clientDto);
-
-    void deleteClient(int id);
 }

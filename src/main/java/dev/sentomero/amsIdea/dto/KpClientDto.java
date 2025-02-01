@@ -13,17 +13,16 @@ public class KpClientDto {
     private String kpClientFName;
     private String kpClientLName;
     private long kpClientSerialNumber;
-    private String registeredBy;
+    private int registeredBy;
     private String categoryRegistered;
     private LocalDateTime kpClientTimeAssigned;
 
 
-    public KpClientDto(String kpClientFName, String kpClientLName, long kpClientSerialNumber, String registeredBy, String categoryRegistered, LocalDateTime kpClientTimeAssigned) {
+    public KpClientDto(String kpClientFName, String kpClientLName, long kpClientSerialNumber,int registeredBy, String categoryRegistered) {
         this.kpClientFName = kpClientFName;
         this.kpClientLName = kpClientLName;
         this.kpClientSerialNumber = kpClientSerialNumber;
         this.registeredBy = registeredBy;
         this.categoryRegistered = categoryRegistered;
-        this.kpClientTimeAssigned = kpClientTimeAssigned;
     }
 }

@@ -7,10 +7,7 @@ import dev.sentomero.amsIdea.service.KpClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,33 +19,45 @@ public class KpClientController {
     private final KpClientService kpClientService;
 
     @Autowired
-    public KpClientController(KpClientService kpClientService){
+    public KpClientController(KpClientService kpClientService) {
         this.kpClientService = kpClientService;
     }
 
-    @PostMapping("/clients/create")
-    public ResponseEntity<KpClient> createKpClient(@RequestBody KpClientDto kpClientDto){
+    // POST - Create new client
+    @PostMapping("/create")  // http://localhost:8080/clients/create
+    public ResponseEntity<KpClient> createKpClient(@RequestBody KpClientDto kpClientDto) {
         KpClient savedClient = kpClientService.saveClient(kpClientDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedClient);
     }
 
+    // GET - Get all clients
+    @GetMapping("/")  // http://localhost:8080/clients/
     public List<KpClient> getAllClients() {
         return kpClientService.getAllClients();
     }
 
-    public KpClient getKpClientById(int id) {
+    // GET - Get client by ID
+    @GetMapping("/{id}")  // http://localhost:8080/clients/{id}
+    public KpClient getKpClientById(@PathVariable int id) {
         return kpClientService.getKpClientById(id);
     }
 
-    public KpClient updateKpClient(int id, KpClientDto kpClientDto) {
+    // PUT - Update client
+    @PutMapping("/{id}")  // http://localhost:8080/clients/{id}
+    public KpClient updateKpClient(@PathVariable int id, @RequestBody KpClientDto kpClientDto) {
         return kpClientService.updateKpClient(id, kpClientDto);
     }
 
-    public void deleteKpClient(int id) {
+    // DELETE - Delete client
+    @DeleteMapping("/{id}")  // http://localhost:8080/clients/{id}
+    public void deleteKpClient(@PathVariable int id) {
         kpClientService.deleteKpClient(id);
     }
 
-    public KpClient getClientBySerialNumber(long serialNumber) {
+    // GET - Get client by serial number
+    @GetMapping("/serial/{serialNumber}")  // http://localhost:8080/clients/serial/{serialNumber}
+    public KpClient getClientBySerialNumber(@PathVariable long serialNumber) {
         return kpClientService.getKpClientBySerialNumber(serialNumber);
     }
 }
+
