@@ -23,15 +23,10 @@ public class AmsUserServiceImpl implements AmsUserService {
 
     @Override
     public AmsUserDto savedUser(AmsUserDto userDto) {
-        if (userDto.getAmsEmail() == null || userDto.getAmsEmail().trim().isEmpty()) {
-            throw new IllegalArgumentException("User email cannot be null or empty");
-        }
-
         AmsUser newUser = new AmsUser();
         newUser.setAmsUserFname(userDto.getAmsUserFname());
         newUser.setAmsUserLname(userDto.getAmsUserLname());
         newUser.setAmsUsername(userDto.getAmsUsername());
-        newUser.setAmsUserEmail(userDto.getAmsEmail());
         newUser.setAmsUserPassword(userDto.getAmsPassword());
         newUser.setTimestamp(LocalDateTime.now());  // Set current timestamp
 
@@ -41,10 +36,19 @@ public class AmsUserServiceImpl implements AmsUserService {
         savedUserDto.setAmsUserFname(savedUser.getAmsUserFname());
         savedUserDto.setAmsUserLname(savedUser.getAmsUserLname());
         savedUserDto.setAmsUsername(savedUser.getAmsUsername());
-        savedUserDto.setAmsEmail(savedUser.getAmsUserEmail());
         savedUserDto.setAmsPassword(savedUser.getAmsUserPassword());
 
         return savedUserDto;
+    }
+
+    @Override
+    public boolean authenticateUser(String username, String password) {
+        AmsUser user = amsUserRepository.findByAmsUsername(username);
+
+        if (user != null && user.getAmsUserPassword().equals(password)) {
+            return true;  // Authentication successful
+        }
+        return false;
     }
 
     @Override
@@ -59,7 +63,6 @@ public class AmsUserServiceImpl implements AmsUserService {
         userDto.setAmsUserFname(user.getAmsUserFname());
         userDto.setAmsUserLname(user.getAmsUserLname());
         userDto.setAmsUsername(user.getAmsUsername());
-        userDto.setAmsEmail(user.getAmsUserEmail());
         return userDto;
     }
 
@@ -72,7 +75,6 @@ public class AmsUserServiceImpl implements AmsUserService {
         userDto.setAmsUserFname(existingUser.getAmsUserFname());
         userDto.setAmsUserLname(existingUser.getAmsUserLname());
         userDto.setAmsUsername(existingUser.getAmsUsername());
-        userDto.setAmsEmail(existingUser.getAmsUserEmail());
         userDto.setAmsPassword(existingUser.getAmsUserPassword());
 
         return userDto;
@@ -82,7 +84,6 @@ public class AmsUserServiceImpl implements AmsUserService {
     public AmsUserDto updateUser(int id, AmsUserDto userDto) {
         AmsUser existingUser = amsUserRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
-        existingUser.setAmsUserEmail(userDto.getAmsEmail());
         existingUser.setAmsUserFname(userDto.getAmsUserFname());
         existingUser.setAmsUserLname(userDto.getAmsUserLname());
         existingUser.setAmsUsername(userDto.getAmsUsername());
@@ -94,7 +95,6 @@ public class AmsUserServiceImpl implements AmsUserService {
         savedUserDto.setAmsUserFname(savedUser.getAmsUserFname());
         savedUserDto.setAmsUserLname(savedUser.getAmsUserLname());
         savedUserDto.setAmsUsername(savedUser.getAmsUsername());
-        savedUserDto.setAmsEmail(savedUser.getAmsUserEmail());
         savedUserDto.setAmsPassword(savedUser.getAmsUserPassword());
 
         return savedUserDto;

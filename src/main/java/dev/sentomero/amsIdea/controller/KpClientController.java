@@ -1,6 +1,5 @@
 package dev.sentomero.amsIdea.controller;
 
-
 import dev.sentomero.amsIdea.dto.KpClientDto;
 import dev.sentomero.amsIdea.model.KpClient;
 import dev.sentomero.amsIdea.service.KpClientService;
@@ -11,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients")
+//@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@RequestMapping("/api/clients")
 public class KpClientController {
 
     private final KpClientService kpClientService;
@@ -52,5 +52,3 @@ public class KpClientController {
         return ResponseEntity.ok(kpClientService.getKpClientBySerialNumber(serialNumber));
     }
 }
-
-

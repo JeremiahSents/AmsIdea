@@ -8,6 +8,9 @@ import java.util.List;
 public interface AmsUserService {
     AmsUserDto savedUser(AmsUserDto user);
 
+    boolean authenticateUser(String username,String password);
+
+
     List<AmsUserDto> getAllUsers();
 
     AmsUserDto getUserById(int id);

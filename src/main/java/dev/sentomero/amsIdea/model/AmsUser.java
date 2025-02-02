@@ -27,9 +27,6 @@ public class AmsUser {
     @Column(name = "Ams_Username", nullable = false, unique = true)
     private String amsUsername;  // lowercase
 
-    @Column(name = "Ams_Email", unique = true, nullable = false)
-    private String amsUserEmail;  // lowercase
-
     @Column(name = "Ams_Password", unique = true, nullable = false)
     private String amsUserPassword;  // lowercase
 

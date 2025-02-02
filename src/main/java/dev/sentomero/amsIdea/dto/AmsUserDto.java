@@ -11,14 +11,12 @@ public class AmsUserDto {
     private String amsUserFname;
     private String amsUserLname;
     private String amsUsername;
-    private String amsEmail;
     private String amsPassword;
 
-    public AmsUserDto(String fname, String lname, String username, String email, String password) {
+    public AmsUserDto(String fname, String lname, String username, String password) {
         this.amsUserFname = fname;
         this.amsUserLname = lname;
         this.amsUsername = username;
-        this.amsEmail = email;
         this.amsPassword = password;  // Don't set to empty string
     }
 }
